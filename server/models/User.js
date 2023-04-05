@@ -7,11 +7,15 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        required: true
     },
-    project: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Project"
+    password: {
+        type: String,
+        required: true
     }
-})
+},
+    { timestamps: true }
+)
 
 const User = mongoose.model("User", userSchema);
+exports.User = User;

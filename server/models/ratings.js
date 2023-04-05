@@ -8,7 +8,14 @@ const ratings = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
-})
+    },
+    rate: {
+        type: String,
+        enum: ['like', 'dislike'],
+        required: true
+    },
+},
+    { timestamps: true }
+)
 
 const Rating = mongoose.model("Rating", ratings);

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const projectRoute = require("./routes/projectRouter");
+const userRouter = require("./routes/Users");
 
 try {
     mongoose.connect("mongodb://127.0.0.1:27017/anxietyBuilding", { useUnifiedTopology: true })
@@ -14,6 +15,7 @@ try {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/projects", projectRoute);
+app.use("/auth", userRouter);
 
 const PORT = 3001 || process.env.PORT;
 
