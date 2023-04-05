@@ -2,6 +2,6 @@ const express = require("express");
 const { uploadProjects } = require("../controllers/project");
 const projectRoute = express.Router();
 
-projectRoute.get("/", uploadProjects);
+projectRoute.post("/uploadProject", uploadProjects);
 
 module.exports = projectRoute;

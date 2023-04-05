@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
 
-exports.uploadProjects = async(req, res, next) => {
+exports.uploadProjects = async (req, res, next) => {
     try {
         const project = await Project.create(req.body);
         res.status(201).json({
