@@ -14,7 +14,7 @@ const projectSchema = new mongoose.Schema({
         required: true
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: "User"
     }
 },
@@ -22,3 +22,4 @@ const projectSchema = new mongoose.Schema({
 )
 
 const Project = mongoose.model("Project", projectSchema);
+exports.Project = Project;
