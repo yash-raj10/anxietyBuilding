@@ -36,7 +36,34 @@ exports.getTworandomProjects = async (req, res) => {
                 projects
             }
         });
-    } catch(err) {
-        res.status(400).json({status: "fail", message: err.message});
+    } catch (err) {
+        res.status(400).json({ status: "fail", message: err.message });
+    }
+}
+
+
+
+exports.rateProject = async (req, res) => {
+    const { userId, rating } = req.body;
+    const projectId = req.params.id;
+
+    console.log(req.body)
+
+    try {
+        const project = await Project.findOneAndUpdate(
+            { _id: projectId },
+            { $push: { total_rating: { user: userId, total_rating: rating } } },
+            { new: true }
+        );
+
+        res.status(200).json({
+            status: "success",
+            message: "Rated successfully",
+            data: {
+                project
+            }
+        })
+    } catch (err) {
+        res.status(400).json({ status: "fail", message: err.message });
     }
 }

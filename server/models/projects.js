@@ -3,22 +3,26 @@ const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        // required: true
     },
     Url: {
         type: String,
-        required: true
+        // required: true
     },
     videoUrl: {
         type: String,
-        required: true
+        // required: true
     },
-    user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User"
-    }
+    total_rating: {
+        type: Number,
+        default: 0,
+    },
+    rating_count: {
+        type: Number,
+        default: 0,
+    },
 },
-{timestamps: true}
+    { timestamps: true }
 )
 
 const Project = mongoose.model("Project", projectSchema);
